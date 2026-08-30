@@ -15,14 +15,15 @@ Ultimo aggiornamento: 2026-08-30 · Sprint: 001
 
 ## Fase corrente
 
-**Scoping** (in chiusura) | Prototipo | Sviluppo | Rilascio | Manutenzione
+Scoping | **Prototipo** (consegnato, in attesa di uso e Segnale) | Sviluppo | Rilascio | Manutenzione
 
-Nota: `scoping/IPOTESI.md` è stata compilata dallo Stratega di Prodotto
-(Ipotesi di Valore falsificabile, etichetta DESIGN, Segnale dichiarato
-debole/auto-riferito in questa fase — vedi il file per i dettagli). Il
-blocco di CLAUDE.md §4 è sciolto: si può passare a Prototipo. Restano però
-aperte lacune non bloccanti per CLAUDE.md §4 ma rilevanti per budget/scope
-(vedi sotto) prima di considerare lo Scoping davvero chiuso.
+Il committente ha risposto alle domande bloccanti (budget, redditività,
+autenticazione rimandata, criterio di successo confermato — vedi SCOPING.md
+§0 aggiornato il 2026-08-30). Il Prototipo Minimo Verificabile è stato
+costruito e testato: catalogo risorse CRUD in `repo-app/` (Python stdlib,
+SQLite, nessuna dipendenza esterna — vedi `tecnico/ARCHITETTURA.md`).
+Ora la palla passa al committente: usarlo per 2-3 settimane è la condizione
+del Segnale dichiarato in `scoping/IPOTESI.md`.
 
 ## Cosa abbiamo promesso / consegnato / manca
 
@@ -31,24 +32,30 @@ Referente di Commessa). Rinvio a `SCOPING.md §7` per il dettaglio granulare.
 
 | Voce dello scope firmato | Consegnata? | Nota |
 |---|---|---|
-| Aggiungere una risorsa al catalogo | no | non ancora avviato lo sviluppo |
-| Visualizzare l'elenco delle risorse | no | non ancora avviato lo sviluppo |
-| Segnare una risorsa come "letta/provata" | no | non ancora avviato lo sviluppo |
-| Contenuto reale RADAR IA (non placeholder) | no | in attesa di materiale dal committente/Designer di Prodotto |
+| Aggiungere una risorsa al catalogo | **sì** | `repo-app/`, testato end-to-end |
+| Visualizzare l'elenco delle risorse | **sì** | con filtro per stato |
+| Segnare una risorsa come "letta/provata" | **sì** | toggle nei due sensi |
+| Contenuto reale RADAR IA (non placeholder) | in attesa | l'app è pronta a riceverlo; il committente inserisce le prime risorse vere durante l'uso |
 
 ## Prossimo Punto di Decisione
 
 Punto di Decisione #1 — dopo il Prototipo Minimo Verificabile (catalogo
-risorse): procedi / taglia / ferma. Data/trigger non fissati:
-`[[LACUNA: budget e scadenza non ancora dichiarati dal committente,
-SCOPING.md §5]]`. Fino a chiarimento su queste lacune, non si procede a
-sviluppo pieno oltre il CRUD minimo già delimitato.
+risorse, consegnato): procedi allo sviluppo pieno / taglia / ferma.
+Trigger: Segnale dichiarato in `scoping/IPOTESI.md` — 2 settimane
+consecutive di uso spontaneo del committente. Nessuna data calendariale
+fissata: il trigger è comportamentale, non temporale.
 
 ## Budget e tempo
 
-`[[LACUNA: nessun budget/ore massime né scadenza dichiarati dal
-committente — SCOPING.md §0 domanda 16]]`. Nessun consumo da registrare a
-questo Sprint (fase Scoping, nessun task tecnico avviato).
+Budget massimo dichiarato dal committente (2026-08-30): equivalente in
+token di **due sessioni Claude Pro, Sonnet 5, livello di ragionamento
+medio** (SCOPING.md §5). Nessuna scadenza calendariale.
+Consumo a questo Sprint: apertura commessa, Scoping, Ipotesi di Valore,
+decisione architetturale e build del Prototipo Minimo Verificabile
+(`repo-app/`), tutto in una sessione — nessuna cifra token esatta
+tracciata da questo processo (il committente monitora il proprio consumo
+lato piattaforma Claude); il Referente segnala qui che l'ordine di
+grandezza resta "poche ore-agente", coerente col budget dichiarato.
 
 ## Scostamento di scope cumulativo
 

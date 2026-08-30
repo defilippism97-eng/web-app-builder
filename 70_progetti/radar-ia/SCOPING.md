@@ -135,25 +135,45 @@ quindi sciolto: si può aprire il prototipo su questo perimetro.
 
 ## 4. Obiettivo di redditività oltre la fattura (CLAUDE.md §3)
 
-- [ ] Data Flywheel — non confermato dal committente
-- [ ] Superficie ricorrente — non confermato dal committente
-- [ ] Nessuna delle due — non confermato dal committente
+- [x] **Data Flywheel** — confermato dal committente (2026-08-30): il
+  catalogo di risorse può diventare un asset dati nel tempo. Implicazione
+  architetturale immediata anche per questo prototipo single-user: lo
+  schema dati va progettato fin da ora in modo da poter tracciare
+  provenienza, qualità e riuso delle risorse catalogate, non solo il CRUD
+  minimo — vincolo per l'Architetto (§4 mandato: non approvare
+  un'architettura che rende il flywheel costoso da aggiungere dopo).
+- [ ] Superficie ricorrente — non dichiarata, non esclusa
+- [ ] Nessuna delle due — esclusa dal committente
 
-`[[LACUNA: domande 8-9 non risposte. Nessuna delle tre caselle va spuntata
-per inferenza. La visione a regime dichiarata dal committente ("rete
-aperta... condivisa... riproducibile") è compatibile con un Data Flywheel a
-lungo termine, ma per QUESTO Prototipo Minimo Verificabile — un CRUD con
-dati reali ma perimetro ridotto — la domanda va comunque posta ora, perché
-CLAUDE.md §3 ricorda che è più caro aggiungere l'architettura dati dopo che
-progettarla prima]]`.
+**Nota**: il Data Flywheel è un obiettivo dichiarato per la visione a
+regime; per QUESTO prototipo (single-user, senza autenticazione, vedi §5)
+non c'è ancora dato aggregabile tra utenti diversi — l'unico effetto
+pratico ora è "non progettare lo schema in un modo che lo precluda dopo",
+non costruire già pipeline di aggregazione.
 
 ## 5. Vincoli dichiarati
 
-- **Budget e scadenza**: `[[LACUNA: domanda 16, non fornita]]`.
-- **Stack imposto**: nessuno dichiarato dal committente finora.
-- **Dati personali trattati**: `[[LACUNA: base giuridica da verificare col
-  Custode Normativo — domanda 10; probabile identificazione minima utente
-  se lo stato "letta/provata" è personale]]`.
+- **Budget e scadenza**: budget massimo dichiarato dal committente
+  (2026-08-30) = equivalente in token di **due sessioni Claude Pro, Sonnet
+  5, livello di ragionamento medio**. Non un importo in ore/euro
+  tradizionale: il Referente lo traduce operativamente come "vincolo di
+  compute/tempo agente stretto" — niente iterazioni multiple di refactoring,
+  build al primo colpo il più possibile, stack che il committente stesso
+  non dovrà poi gestire manualmente. Nessuna scadenza calendariale associata.
+- **Stack imposto**: nessuno dichiarato dal committente. Dato il budget
+  molto stretto, l'Architetto deve scegliere per velocità di consegna
+  entro il budget, non per idoneità a lungo termine — coerente con "perché
+  non la scelta più semplice possibile" del suo mandato.
+- **Autenticazione**: esplicitamente rimandata dal committente (2026-08-30):
+  "per ora single-user senza account, poi implementeremo il sistema di
+  riconoscimento e autenticazione degli utenti e il relativo backend".
+  Questo prototipo resta quindi senza login; l'introduzione
+  dell'autenticazione è già registrata come **fuori scope in questa fase**
+  (§7) e richiederà una Delibera locale per essere sviluppata.
+- **Dati personali trattati**: nessuno in questa fase (single-user, senza
+  account, nessun dato che identifichi una persona diversa dal committente
+  stesso che usa il proprio prototipo). Da riverificare col Custode non
+  appena si introduce l'autenticazione multi-utente (fuori scope oggi).
 - **Settore regolato / normative note**: `[[LACUNA: domanda 11]]`.
 - **Accessibilità richiesta**: `[[LACUNA: domanda 12, rilevante dato il
   pubblico dichiarato include "curiosi"]]`.
