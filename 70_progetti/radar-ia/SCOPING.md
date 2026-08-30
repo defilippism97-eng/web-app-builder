@@ -215,10 +215,26 @@ cumulativo — non solo l'ultima estensione.
 - Contenuto reale legato a RADAR IA (non dati placeholder/lorem ipsum).
 - Complessità tecnica paragonabile a una to-do list (CRUD semplice, single
   utente reale in questa fase — il committente stesso).
+- **Mockup/anteprima visiva della community (solo frontend, dati
+  locali/statici, nessun backend condiviso)** — autorizzato da
+  `delibere/DEL-LOCALE-001-mockup-community.md` (2026-08-30), a fronte di
+  una richiesta esplicita del committente in risposta a
+  `PUNTO_DECISIONE_001.md`. Perimetro preciso: schermate navigabili che
+  fanno intuire come funzionerà la community (condivisione di
+  esperienze/opinioni, unirsi a progetti altrui, chiedere aiuto), con dati
+  d'esempio statici o salvati solo localmente sul dispositivo del
+  committente. Nessuna schermata di login/profilo autentica realmente
+  nessuno: è scena, non funzione.
 
 **Esplicitamente fuori scope in questa fase** (qualunque estensione qui
 sotto richiede una Delibera locale in `70_progetti/radar-ia/delibere/`
 prima di diventare codice — veto del Referente di Commessa altrimenti):
+- Il backend reale della community, l'autenticazione reale, la
+  persistenza multi-utente condivisa e la moderazione **restano fuori
+  scope anche dopo `DEL-LOCALE-001`**: quella Delibera autorizza solo la
+  vetrina visiva/frontend, non scioglie questo blocco. Vedi
+  `DEL-LOCALE-001-mockup-community.md`, sezione "Cosa NON autorizza", per
+  il dettaglio punto per punto.
 - L'intera rete/community aperta a regime di RADAR IA (utenti multipli
   esterni, contributi di terzi, moderazione).
 - Funzionalità di "riproducibilità" degli esperimenti (esecuzione,

@@ -57,15 +57,67 @@ tracciata da questo processo (il committente monitora il proprio consumo
 lato piattaforma Claude); il Referente segnala qui che l'ordine di
 grandezza resta "poche ore-agente", coerente col budget dichiarato.
 
+**`[[LACUNA: nuovo budget/tempo per il mockup community non ancora
+dichiarato dal committente]]`.** Il budget originario (due sessioni Claude
+Pro, Sonnet 5, ragionamento medio) è stato dimensionato per il solo
+catalogo single-user (SCOPING.md §5), non per un secondo pacchetto di
+schermate autorizzato ora da `delibere/DEL-LOCALE-001-mockup-community.md`.
+Stima di ordine di grandezza dell'Officina (da sottoporre al committente
+per conferma, non decisione presa): un mockup di poche schermate statiche
+(elenco/dettaglio esperienze, form di esempio, vetrina "unisciti a un
+progetto"/"chiedi aiuto") senza backend è un incremento **minore** rispetto
+al costo del backend pieno scartato — verosimilmente comparabile a una
+frazione di una sessione Claude Pro aggiuntiva per design+frontend — ma non
+è gratuito né compreso implicitamente nel budget già dichiarato per il solo
+catalogo. Il Referente non fissa questa cifra unilateralmente: va confermata
+o corretta dal committente prima che `designer-prodotto` e
+`sviluppatore-frontend` inizino il lavoro.
+
 ## Scostamento di scope cumulativo
 
-**Aggiornamento Sprint corrente**: costruito = ancora invariato rispetto a
-`SCOPING.md §7` (nessuna riga di codice nuova aggiunta a `repo-app/` a
-questo Sprint). Ma è arrivata la **prima richiesta di estensione**, ed è
-la voce che pesa di più tra tutte quelle elencate in §7 come fuori scope:
-non un campo in più, ma l'intera rete/community multi-utente.
+**Aggiornamento Sprint corrente**: il committente ha risposto a
+`PUNTO_DECISIONE_001.md` con una richiesta puntuale (non tra le opzioni
+testuali offerte, ma variante mirata dell'Opzione 2): un mockup/anteprima
+visiva della community, solo frontend, senza backend reale. Il Referente
+ha tradotto la richiesta in un perimetro scrivibile e l'ha coperta con
+`delibere/DEL-LOCALE-001-mockup-community.md` (2026-08-30). Questo
+scostamento **cambia stato**: da "richiesta in attesa, veto aperto" a
+**"deliberato e autorizzato nel perimetro esatto della Delibera"** — non è
+più uno scostamento non deliberato come lo era fino a questo Sprint.
 
-**Scostamento proposto #1 (non ancora deciso, non costruito):**
+**Scostamento #1 — ORA DELIBERATO E AUTORIZZATO (perimetro preciso):**
+- **Cosa è autorizzato**: mockup/anteprima visiva e interattiva della
+  community (schermate navigabili, condivisione di esperienze/opinioni,
+  "unisciti a un progetto altrui", "chiedi aiuto"), con dati d'esempio
+  statici o salvati solo localmente sul dispositivo del committente.
+  Nessun account reale, nessuna autenticazione reale.
+- **Cosa resta vietato, invariato**: backend community reale,
+  autenticazione reale, dati di utenti terzi reali, persistenza
+  multi-utente condivisa, moderazione. Tutti questi restano vincolati al
+  Punto di Decisione #2 di `scoping/IPOTESI.md` (Segnale da 3-5 utenti
+  terzi reali), non sciolti da questa Delibera locale — vedi
+  `DEL-LOCALE-001-mockup-community.md` per il dettaglio.
+- **Copertura**: `delibere/DEL-LOCALE-001-mockup-community.md`, in vigore
+  dal 2026-08-30. Il veto del Referente su questa specifica richiesta è
+  quindi **sciolto**, ma resta attivo, invariato, su tutto ciò che la
+  Delibera esplicitamente non autorizza (vedi sopra).
+- **Budget**: non ancora coperto da una cifra confermata dal committente —
+  vedi `[[LACUNA]]` in §Budget e tempo sopra. Lo sviluppo del mockup non
+  dovrebbe partire fino a conferma, per lo stesso principio che ha
+  bloccato la community piena: uno scope autorizzato senza budget
+  dichiarato è comunque un rischio economico, anche se più piccolo.
+- **Nota per lo scostamento cumulativo dei prossimi Sprint**: questa
+  Delibera copre *solo* il mockup così definito. Qualunque nuova richiesta
+  — anche piccola, anche "solo per la demo" — che introduca un elemento
+  tra quelli vietati (backend, auth, dati di terzi, persistenza condivisa,
+  moderazione) è un **nuovo** scostamento, non compreso qui, e torna sotto
+  veto del Referente finché non ha una propria Delibera o una decisione
+  esplicita dell'umano. Il pattern da sorvegliare resta lo stesso di
+  sempre: piccole estensioni "solo per far vedere meglio il mockup" che,
+  sommate, ricostruiscono il backend che questa Delibera esclude
+  esplicitamente.
+
+**Storico — scostamento proposto #1 originario (superato, ora deliberato):**
 - **Data**: 2026-08-30, Sprint 001.
 - **Richiesta**: il committente ha chiesto di espandere la visione a una
   community — condivisione di esperienze su IA/lavoro/vibe coding/
@@ -90,28 +142,30 @@ non un campo in più, ma l'intera rete/community multi-utente.
   ferma e riparti con uno Scoping nuovo per la commessa community) e
   raccomandazione. Nessuna comunicazione è stata inviata al committente:
   è una bozza per l'umano.
-- **Stato**: in attesa di decisione. Finché non c'è una decisione esplicita
-  (via Delibera locale o conferma dell'umano su una delle opzioni), lo
-  scostamento resta a **0 righe di codice costruite fuori scope**, ma il
-  rischio è alto proprio perché la richiesta è già stata espressa dal
-  committente: da monitorare ad ogni Sprint successivo perché non
-  rientri "di fatto" per piccoli passi (un campo, poi un secondo utente di
-  prova, poi un sistema di commenti) senza mai passare da una decisione
-  esplicita — è esattamente il pattern che il mandato del Referente deve
-  intercettare.
+- **Stato originario**: era "in attesa di decisione". **Superato da questo
+  Sprint**: il committente ha risposto, ed è stata scritta la Delibera
+  `DEL-LOCALE-001-mockup-community.md` che copre il perimetro mockup —
+  vedi voce "Scostamento #1 — ORA DELIBERATO E AUTORIZZATO" sopra per lo
+  stato aggiornato.
 
 Questa sezione va confrontata ad ogni Sprint successivo con `SCOPING.md
 §7`, sommando tutte le piccole estensioni "ragionevoli" via via proposte —
 non solo l'ultima — per far emergere lo scostamento cumulativo.
 
-**Perimetro di riferimento per il veto del Referente di Commessa (nessuna
-Delibera presente ad oggi in `70_progetti/radar-ia/delibere/`, cartella
-vuota):**
-- Tutto ciò che va oltre il CRUD minimo del catalogo risorse (vedi
-  SCOPING.md §7, "Esplicitamente fuori scope in questa fase") resta un
-  **veto aperto** finché non viene coperto da una Delibera locale.
-- In particolare: rete/community a regime, riproducibilità sperimentale,
-  ricerca/filtri avanzati, multi-utente/ruoli, raccomandazioni o scoring,
+**Perimetro di riferimento per il veto del Referente di Commessa
+(aggiornato a questo Sprint con `DEL-LOCALE-001-mockup-community.md` in
+vigore):**
+- Il mockup/anteprima visiva della community (solo frontend, dati
+  locali/statici) è **autorizzato** nel perimetro esatto della Delibera:
+  non è più sotto veto.
+- Tutto il resto che va oltre il CRUD minimo del catalogo risorse e oltre
+  il mockup autorizzato (vedi `SCOPING.md §7`, "Esplicitamente fuori scope
+  in questa fase") resta un **veto aperto** finché non viene coperto da
+  una propria Delibera locale.
+- In particolare restano sotto veto: backend community reale,
+  autenticazione reale, dati di utenti terzi reali, persistenza
+  multi-utente condivisa, moderazione, riproducibilità sperimentale,
+  ricerca/filtri avanzati, ruoli/permessi, raccomandazioni o scoring,
   integrazioni IA lato prodotto, pubblicazione pubblica.
 
 ## Pareri di rilascio in essere
