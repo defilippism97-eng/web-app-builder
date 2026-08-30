@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADAR IA — Anteprima community (mockup)</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/community/community.css">
+</head>
+<body>
+<div class="banner-anteprima" role="status">
+  <strong>Anteprima</strong> — non ancora attivo. I contenuti sono di esempio, nessuna persona reale sta scrivendo qui.
+</div>
+
+<header class="intestazione">
+  <div class="logo-riga">
+    <span class="logo-nome">RADAR<span class="logo-ia">IA</span></span>
+  </div>
+  <p class="claim">Community — anteprima di come funzionerà (mockup)</p>
+</header>
+
+<nav class="nav-community" aria-label="Navigazione anteprima community">
+  <a class="link-torna" href="/index.html">← Torna al catalogo (prodotto reale)</a>
+  <div class="tabs-community">
+    <a href="/community/index.html" aria-current="page">Feed</a>
+    <a href="/community/progetti.html">Progetti</a>
+  </div>
+</nav>
+
+<main>
+  <section class="pannello-lista">
+    <div class="lista-intestazione">
+      <h2>Bacheca di esperienze e opinioni</h2>
+    </div>
+    <p class="lista-vuota">Anteprima statica: 5 post d'esempio, scritti dall'Officina per mostrare la direzione del prodotto — nessun contenuto reale.</p>
+    <ul id="lista-post" class="lista-risorse"></ul>
+  </section>
+</main>
+
+<footer class="piede">
+  <p>Mockup non funzionante — nessun dato reale, nessun account, nessuna interazione salvata.</p>
+</footer>
+
+<div id="toast-in-arrivo" class="toast-in-arrivo" role="status" aria-live="polite" hidden></div>
+
+<script src="/community/dati.js"></script>
+<script src="/community/community.js"></script>
+<script>
+  const listaPost = document.getElementById("lista-post");
+
+  const ETICHETTE_TAG = {
+    "vibe coding": "Vibe coding",
+    "esperimento": "Esperimento",
+    "opinione": "Opinione",
+    "pratica": "Pratica",
+  };
+
+  for (const post of POST_COMMUNITY) {
+    const li = document.createElement("li");
+    li.className = "risorsa" + (post.tipo === "aiuto" ? " scheda-aiuto" : "");
+
+    const rigaAlto = document.createElement("div");
+    rigaAlto.className = "post-riga-alto";
+    rigaAlto.appendChild(creaNomeAutore(post.autore));
+
+    const tag = document.createElement("span");
+    tag.className = "risorsa-tipo";
+    tag.textContent = post.tipo === "aiuto" ? "Richiesta di aiuto" : (ETICHETTE_TAG[post.tag] || post.tag);
+    rigaAlto.appendChild(tag);
+    li.appendChild(rigaAlto);
+
+    const testo = document.createElement("p");
+    testo.className = "post-testo";
+    testo.textContent = post.testo;
+    li.appendChild(testo);
+
+    if (post.tipo === "aiuto") {
+      const badgeStato = document.createElement("span");
+      badgeStato.className = "badge-stato-aiuto";
+      badgeStato.textContent = "Stato: aperta";
+      li.appendChild(badgeStato);
+    }
+
+    const azioni = document.createElement("div");
+    azioni.className = "post-azioni";
+
+    const bMiPiace = document.createElement("button");
+    bMiPiace.type = "button";
+    bMiPiace.dataset.azioneFinta = "";
+    bMiPiace.textContent = "Mi piace";
+    azioni.appendChild(bMiPiace);
+
+    const bCommenta = document.createElement("button");
+    bCommenta.type = "button";
+    bCommenta.dataset.azioneFinta = "";
+    bCommenta.textContent = post.tipo === "aiuto" ? "Rispondi" : "Commenta";
+    azioni.appendChild(bCommenta);
+
+    li.appendChild(azioni);
+
+    const link = document.createElement("a");
+    link.className = "post-link-apri";
+    link.href = `/community/post.html?id=${post.id}`;
+    link.textContent = post.tipo === "aiuto" ? "Apri richiesta di aiuto →" : "Apri dettaglio →";
+    li.appendChild(link);
+
+    listaPost.appendChild(li);
+  }
+</script>
+</body>
+</html>

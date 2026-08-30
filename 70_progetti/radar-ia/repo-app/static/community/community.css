@@ -1,0 +1,221 @@
+/* RADAR IA — Anteprima community: stili aggiuntivi.
+   Estende style.css (variabili colore, font, .pannello-lista, .risorsa,
+   .filtro) invece di duplicarli — vedi MOCKUP_COMMUNITY.md §2. Caricare
+   sempre DOPO style.css. */
+
+/* Banner di anteprima — sempre visibile, non chiudibile, non scompare
+   allo scroll (DEL-LOCALE-001, MOCKUP_COMMUNITY.md §3.1). */
+.banner-anteprima {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--giallo);
+  color: var(--nero);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--nero);
+}
+
+.banner-anteprima strong { text-transform: uppercase; }
+
+/* Navigazione della sola area community: separata visivamente
+   dall'intestazione del catalogo, coerente nello stile. */
+.nav-community {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.nav-community .link-torna { color: var(--nero); font-weight: 600; }
+
+.nav-community .tabs-community { display: flex; gap: 0.75rem; }
+
+.nav-community .tabs-community a {
+  color: var(--viola);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-community .tabs-community a:hover,
+.nav-community .tabs-community a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* Badge "esempio" accanto a ogni autore — MOCKUP_COMMUNITY.md §3.3 */
+.badge-esempio {
+  display: inline-block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #555;
+  background: var(--panna);
+  border: 1px solid var(--bordo);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.4rem;
+  font-weight: 700;
+}
+
+.autore-post { font-weight: 700; font-style: normal; }
+
+/* Riuso del pattern "scheda" (.risorsa) per post/progetti/commenti */
+.post-riga-alto {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.post-testo { margin: 0.35rem 0 0; }
+
+.post-azioni {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.post-azioni button {
+  background: transparent;
+  color: var(--nero);
+  border: 1px solid var(--bordo);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+.post-azioni button:hover { border-color: var(--viola); color: var(--viola); }
+
+.post-link-apri {
+  align-self: start;
+  color: var(--viola);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.post-link-apri:hover { text-decoration: underline; }
+
+/* Scheda "richiesta di aiuto": stessa struttura di .risorsa, accento viola
+   invece del verde/giallo usato per lo stato del catalogo, per non
+   confondere semanticamente i due sistemi di colore. */
+.scheda-aiuto { border-left: 4px solid var(--viola); }
+
+.badge-stato-aiuto {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--viola);
+  background: var(--panna);
+  border: 1px solid var(--viola);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* Vetrina progetti */
+.griglia-progetti {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.scheda-progetto {
+  border: 1px solid var(--bordo);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.progetto-titolo { font-weight: 700; margin: 0; }
+.progetto-descrizione { font-size: 0.85rem; color: #333; margin: 0; }
+
+.progetto-stato {
+  justify-self: start;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #555;
+  background: var(--panna);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+}
+
+/* Dettaglio post */
+.dettagli-tecnici {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.dettagli-tecnici li { background: var(--panna); border-radius: 8px; padding: 0.25rem 0.6rem; }
+
+.sezione-commenti { margin-top: 1.25rem; border-top: 1px solid var(--bordo); padding-top: 1rem; }
+
+.commento {
+  border: 1px solid var(--bordo);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.commento-testo { margin: 0.25rem 0 0; font-size: 0.9rem; }
+
+.form-commento-finto {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.form-commento-finto textarea {
+  font: inherit;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--bordo);
+  border-radius: 8px;
+  background: var(--panna);
+}
+
+.nessun-commento { color: #666; font-size: 0.85rem; }
+
+/* Toast di conferma "in arrivo" — mai un finto successo, sempre lo stesso
+   messaggio di funzione non ancora attiva. role="status" + aria-live nel
+   markup: annuncia senza spostare il focus (MOCKUP_COMMUNITY.md §3.2). */
+.toast-in-arrivo {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  background: var(--nero);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.toast-in-arrivo[hidden] { display: none; }

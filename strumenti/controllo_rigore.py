@@ -92,6 +92,15 @@ def e_governo(rel):
         return True
     if base.startswith("DEBITO_") or base == "PUNTO_DECISIONE_TEMPLATE.md":
         return True
+    if rel.startswith("50_compliance" + os.sep) or rel == "50_compliance":
+        # Pareri del Custode: devono poter nominare cio' che vietano (es.
+        # elencare i dark pattern) per poterli vietare, come CLAUDE.md.
+        return True
+    if rel.startswith("60_conoscenza" + os.sep) or rel == "60_conoscenza":
+        # Base di conoscenza riusabile: pattern ed errori discutono spesso
+        # cosa evitare citandolo esplicitamente (es. "qui si introduce
+        # facilmente un dark pattern"), non lo stanno implementando.
+        return True
     return False
 
 

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADAR IA — Anteprima community (mockup)</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/community/community.css">
+</head>
+<body>
+<div class="banner-anteprima" role="status">
+  <strong>Anteprima</strong> — non ancora attivo. I contenuti sono di esempio, nessuna persona reale sta scrivendo qui.
+</div>
+
+<header class="intestazione">
+  <div class="logo-riga">
+    <span class="logo-nome">RADAR<span class="logo-ia">IA</span></span>
+  </div>
+  <p class="claim">Community — anteprima di come funzionerà (mockup)</p>
+</header>
+
+<nav class="nav-community" aria-label="Navigazione anteprima community">
+  <a class="link-torna" href="/index.html">← Torna al catalogo (prodotto reale)</a>
+  <div class="tabs-community">
+    <a href="/community/index.html">Feed</a>
+    <a href="/community/progetti.html">Progetti</a>
+  </div>
+</nav>
+
+<main>
+  <section class="pannello-lista" id="contenitore-post">
+    <p id="post-non-trovato" hidden>Post d'esempio non trovato. <a href="/community/index.html">Torna al feed</a>.</p>
+  </section>
+</main>
+
+<footer class="piede">
+  <p>Mockup non funzionante — nessun dato reale, nessun account, nessuna interazione salvata.</p>
+</footer>
+
+<div id="toast-in-arrivo" class="toast-in-arrivo" role="status" aria-live="polite" hidden></div>
+
+<script src="/community/dati.js"></script>
+<script src="/community/community.js"></script>
+<script>
+  const contenitore = document.getElementById("contenitore-post");
+  const nonTrovato = document.getElementById("post-non-trovato");
+
+  const parametri = new URLSearchParams(window.location.search);
+  const id = Number(parametri.get("id"));
+  const post = POST_COMMUNITY.find((p) => p.id === id);
+
+  if (!post) {
+    nonTrovato.hidden = false;
+  } else {
+    const eAiuto = post.tipo === "aiuto";
+
+    const titolo = document.createElement("h2");
+    titolo.textContent = eAiuto ? "Richiesta di aiuto (esempio)" : "Dettaglio post (esempio)";
+    contenitore.appendChild(titolo);
+
+    const rigaAlto = document.createElement("div");
+    rigaAlto.className = "post-riga-alto";
+    rigaAlto.appendChild(creaNomeAutore(post.autore));
+    const tag = document.createElement("span");
+    tag.className = "risorsa-tipo";
+    tag.textContent = eAiuto ? "Richiesta di aiuto" : post.tag;
+    rigaAlto.appendChild(tag);
+    contenitore.appendChild(rigaAlto);
+
+    if (eAiuto) {
+      const badgeStato = document.createElement("span");
+      badgeStato.className = "badge-stato-aiuto";
+      badgeStato.textContent = "Stato: aperta — in arrivo risposte";
+      contenitore.appendChild(badgeStato);
+    }
+
+    const testo = document.createElement("p");
+    testo.className = "post-testo";
+    testo.textContent = post.testo;
+    contenitore.appendChild(testo);
+
+    if (post.dettagli && post.dettagli.length) {
+      const listaDettagli = document.createElement("ul");
+      listaDettagli.className = "dettagli-tecnici";
+      for (const d of post.dettagli) {
+        const li = document.createElement("li");
+        li.textContent = `${d.etichetta}: ${d.valore}`;
+        listaDettagli.appendChild(li);
+      }
+      contenitore.appendChild(listaDettagli);
+    }
+
+    const azioni = document.createElement("div");
+    azioni.className = "post-azioni";
+    const bMiPiace = document.createElement("button");
+    bMiPiace.type = "button";
+    bMiPiace.dataset.azioneFinta = "";
+    bMiPiace.textContent = "Mi piace";
+    azioni.appendChild(bMiPiace);
+    contenitore.appendChild(azioni);
+
+    // Sezione commenti / risposte — sempre disattivata, mai un finto invio.
+    const sezioneCommenti = document.createElement("section");
+    sezioneCommenti.className = "sezione-commenti";
+
+    const titoloCommenti = document.createElement("h3");
+    titoloCommenti.textContent = eAiuto ? "Risposte" : "Commenti";
+    sezioneCommenti.appendChild(titoloCommenti);
+
+    if (post.commenti && post.commenti.length) {
+      for (const c of post.commenti) {
+        const box = document.createElement("div");
+        box.className = "commento";
+        box.appendChild(creaNomeAutore(c.autore));
+        const testoCommento = document.createElement("p");
+        testoCommento.className = "commento-testo";
+        testoCommento.textContent = c.testo;
+        box.appendChild(testoCommento);
+        sezioneCommenti.appendChild(box);
+      }
+    } else {
+      const nessuno = document.createElement("p");
+      nessuno.className = "nessun-commento";
+      nessuno.textContent = eAiuto
+        ? "Nessuna risposta tra gli esempi."
+        : "Nessun commento tra gli esempi.";
+      sezioneCommenti.appendChild(nessuno);
+    }
+
+    const form = document.createElement("form");
+    form.className = "form-commento-finto";
+    form.setAttribute("data-form-finto", "");
+    form.setAttribute("aria-label", eAiuto ? "Rispondi (non attivo)" : "Scrivi un commento (non attivo)");
+
+    const label = document.createElement("label");
+    label.htmlFor = "campo-commento-finto";
+    label.textContent = eAiuto ? "Rispondi…" : "Scrivi un commento…";
+    const textarea = document.createElement("textarea");
+    textarea.id = "campo-commento-finto";
+    textarea.rows = 2;
+    textarea.placeholder = eAiuto ? "La tua risposta (non attiva in questa anteprima)" : "Il tuo commento (non attivo in questa anteprima)";
+
+    const bottoneInvia = document.createElement("button");
+    bottoneInvia.type = "submit";
+    bottoneInvia.textContent = eAiuto ? "Invia risposta" : "Invia commento";
+
+    form.append(label, textarea, bottoneInvia);
+    sezioneCommenti.appendChild(form);
+
+    contenitore.appendChild(sezioneCommenti);
+  }
+</script>
+</body>
+</html>

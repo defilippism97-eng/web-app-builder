@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADAR IA — Catalogo risorse</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="intestazione">
+  <div class="logo-riga">
+    <span class="logo-nome">RADAR<span class="logo-ia">IA</span></span>
+  </div>
+  <p class="claim">Osserviamo. Documentiamo. Condividiamo. Riproduciamo.</p>
+</header>
+
+<main>
+  <section class="pannello-form">
+    <h2>Aggiungi una risorsa</h2>
+    <form id="form-risorsa">
+      <label>
+        Titolo <span class="obbligatorio">*</span>
+        <input type="text" id="campo-titolo" maxlength="200" required>
+      </label>
+      <label>
+        URL
+        <input type="url" id="campo-url" maxlength="2000" placeholder="https://…">
+      </label>
+      <label>
+        Tipo
+        <select id="campo-tipo">
+          <option value="pratica">Pratica</option>
+          <option value="strumento">Strumento</option>
+          <option value="esperimento">Esperimento</option>
+        </select>
+      </label>
+      <label>
+        Note
+        <textarea id="campo-note" maxlength="2000" rows="2"></textarea>
+      </label>
+      <button type="submit">Aggiungi al catalogo</button>
+      <p id="messaggio-form" class="messaggio" role="status"></p>
+    </form>
+  </section>
+
+  <section class="pannello-lista">
+    <div class="lista-intestazione">
+      <h2>Catalogo</h2>
+      <div class="filtri" role="group" aria-label="Filtra per stato">
+        <button type="button" class="filtro attivo" data-filtro="tutte">Tutte</button>
+        <button type="button" class="filtro" data-filtro="da_provare">Da provare</button>
+        <button type="button" class="filtro" data-filtro="letta_provata">Letta/provata</button>
+      </div>
+    </div>
+    <ul id="lista-risorse" class="lista-risorse"></ul>
+    <p id="lista-vuota" class="lista-vuota" hidden>Nessuna risorsa nel catalogo. Aggiungine una qui sopra.</p>
+  </section>
+</main>
+
+<footer class="piede">
+  <p>Prototipo Minimo Verificabile — solo per uso locale del committente, nessun account, nessun dato condiviso.</p>
+  <p><a href="/community/index.html">Anteprima community (mockup, non ancora attiva) →</a></p>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
