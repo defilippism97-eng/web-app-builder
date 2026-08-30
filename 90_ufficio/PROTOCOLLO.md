@@ -58,11 +58,13 @@ sé stesso, indipendentemente da quanto il lavoro proceda bene.
 
 In ordine, dal più alto: **Custode Normativo** (compliance/etica) →
 **Referente di Commessa** (scope/budget) → **DevOps & Sicurezza** (rilascio
-in produzione) → **Archivista di Prodotto** (fonti/licenze) →
-**Stratega di Prodotto** (assenza di Ipotesi di Valore). Un veto di rango
-superiore sospende automaticamente l'esecuzione di un artefatto anche se un
-mandato di rango inferiore lo aveva già approvato. Solo il Consiglio, con
-conferma dell'umano, può riaprire un veto del Custode.
+in produzione) → **Collaudatore & QA** (funzionalità/esperienza reale della
+Consegna, verificata eseguendo davvero l'applicazione — mandato aggiunto
+2026-08-30, `90_ufficio/MANDATI.md` §9) → **Archivista di Prodotto**
+(fonti/licenze) → **Stratega di Prodotto** (assenza di Ipotesi di Valore).
+Un veto di rango superiore sospende automaticamente l'esecuzione di un
+artefatto anche se un mandato di rango inferiore lo aveva già approvato.
+Solo il Consiglio, con conferma dell'umano, può riaprire un veto del Custode.
 
 ## 5. Messaggi e Punti di Decisione verso l'umano
 

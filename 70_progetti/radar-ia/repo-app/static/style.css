@@ -195,3 +195,8 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   font-size: 0.8rem;
   padding: 1.5rem;
 }
+
+.piede a {
+  color: var(--viola);
+  font-weight: 700;
+}

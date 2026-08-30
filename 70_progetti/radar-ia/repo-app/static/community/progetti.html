@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADAR IA — Anteprima community (mockup)</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/community/community.css">
+</head>
+<body>
+<div class="banner-anteprima" role="status">
+  <strong>Anteprima</strong> — non ancora attivo. I contenuti sono di esempio, nessuna persona reale sta scrivendo qui.
+</div>
+
+<header class="intestazione">
+  <div class="logo-riga">
+    <span class="logo-nome">RADAR<span class="logo-ia">IA</span></span>
+  </div>
+  <p class="claim">Community — anteprima di come funzionerà (mockup)</p>
+</header>
+
+<nav class="nav-community" aria-label="Navigazione anteprima community">
+  <a class="link-torna" href="/index.html">← Torna al catalogo (prodotto reale)</a>
+  <div class="tabs-community">
+    <a href="/community/index.html">Feed</a>
+    <a href="/community/progetti.html" aria-current="page">Progetti</a>
+  </div>
+</nav>
+
+<main>
+  <section class="pannello-lista">
+    <div class="lista-intestazione">
+      <h2>Vetrina progetti — unisciti a un progetto</h2>
+    </div>
+    <p class="lista-vuota">Anteprima statica: 3 progetti d'esempio, scritti dall'Officina — nessun progetto reale, nessuna adesione reale.</p>
+    <ul id="griglia-progetti" class="griglia-progetti"></ul>
+  </section>
+</main>
+
+<footer class="piede">
+  <p>Mockup non funzionante — nessun dato reale, nessun account, nessuna interazione salvata.</p>
+</footer>
+
+<div id="toast-in-arrivo" class="toast-in-arrivo" role="status" aria-live="polite" hidden></div>
+
+<script src="/community/dati.js"></script>
+<script src="/community/community.js"></script>
+<script>
+  const griglia = document.getElementById("griglia-progetti");
+
+  for (const progetto of PROGETTI_COMMUNITY) {
+    const li = document.createElement("li");
+    li.className = "scheda-progetto";
+
+    const titolo = document.createElement("p");
+    titolo.className = "progetto-titolo";
+    titolo.textContent = progetto.titolo;
+    li.appendChild(titolo);
+
+    const descrizione = document.createElement("p");
+    descrizione.className = "progetto-descrizione";
+    descrizione.textContent = progetto.descrizione;
+    li.appendChild(descrizione);
+
+    const stato = document.createElement("span");
+    stato.className = "progetto-stato";
+    stato.textContent = `Stato: ${progetto.stato}`;
+    li.appendChild(stato);
+
+    const bottone = document.createElement("button");
+    bottone.type = "button";
+    bottone.dataset.azioneFinta = "";
+    bottone.textContent = "Unisciti";
+    li.appendChild(bottone);
+
+    griglia.appendChild(li);
+  }
+</script>
+</body>
+</html>

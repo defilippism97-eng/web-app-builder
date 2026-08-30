@@ -36,6 +36,7 @@ Referente di Commessa). Rinvio a `SCOPING.md §7` per il dettaglio granulare.
 | Visualizzare l'elenco delle risorse | **sì** | con filtro per stato |
 | Segnare una risorsa come "letta/provata" | **sì** | toggle nei due sensi |
 | Contenuto reale RADAR IA (non placeholder) | in attesa | l'app è pronta a riceverlo; il committente inserisce le prime risorse vere durante l'uso |
+| Mockup community (perimetro `DEL-LOCALE-001`) | **sì** | `repo-app/static/community/`, collaudato — vedi sotto |
 
 ## Prossimo Punto di Decisione
 
@@ -184,8 +185,15 @@ vigore):**
 
 ## Pareri di rilascio in essere
 
-Nessuno. Nessuna Consegna verso il committente è ancora stata preparata o
-inviata a questo Sprint.
+Nessun parere del Custode (nessun dato personale trattato, single-user).
+**Collaudo del Collaudatore & QA** (nuovo mandato, DEL-0005):
+`COLLAUDO_001.md` — verdetto **PASSA**, mockup community navigato dal vivo
+con browser reale, catalogo esistente confermato senza regressioni, tutti
+i vincoli di `DEL-LOCALE-001-mockup-community.md` verificati nell'esperienza
+reale (banner sempre visibile, nessuna azione sociale reale, zero chiamate
+di rete dal mockup). Una sola osservazione non bloccante (campi
+modello/temperatura mostrati come placeholder). Pronto per essere mostrato
+al committente.
 
 ## Debiti aperti
 

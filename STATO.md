@@ -20,6 +20,12 @@ Ultimo aggiornamento: 2026-08-30 · Sprint: 001
   default una ripresa automatica del lavoro (Routine periodica) al posto
   di fermarsi silenziosamente su limite di sessione. Applicata la prima
   volta su RADAR IA (Routine `trig_01MsNvLecksQF6tXEU4A8sug`, ogni 3 ore).
+- **DEL-0005** — Dodicesimo mandato permanente: **Collaudatore & QA**
+  (`collaudatore`, `.claude/agents/collaudatore.md`). Verifica ogni
+  Consegna eseguendo davvero l'applicazione prima che raggiunga il
+  committente, veto sulla Consegna se trova un problema bloccante.
+  Inserito nella gerarchia dei veti (`PROTOCOLLO.md` §4) tra DevOps &
+  Sicurezza e Archivista di Prodotto.
 
 ## Commesse attive
 

@@ -45,6 +45,16 @@ python3 -m unittest test_server -v
 Niente altro: niente login, niente ricerca avanzata, niente condivisione
 pubblica — sono esplicitamente fuori scope per questa fase.
 
+## Anteprima community (mockup, non ancora attiva)
+
+Con il server avviato, apri http://127.0.0.1:8420/community/index.html (o
+segui il link "Anteprima community" in fondo alla pagina del catalogo).
+È un mockup statico (DEL-LOCALE-001, `../delibere/DEL-LOCALE-001-mockup-community.md`):
+dati d'esempio hardcoded in `static/community/dati.js`, nessuna chiamata di
+rete, nessun endpoint nuovo lato server, nessuna interazione sociale reale
+(ogni pulsante mostra "In arrivo — questa funzione non è ancora attiva").
+Non fa parte del prodotto reale sopra descritto.
+
 ## Prima di esporlo fuori dal tuo computer
 
 Questo prototipo **non ha superato** la checklist di sicurezza pre-rilascio
