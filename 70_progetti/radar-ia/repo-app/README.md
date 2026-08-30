@@ -26,6 +26,16 @@ python3 server.py
 Apri http://127.0.0.1:8420 nel browser. Il database SQLite viene creato al
 primo avvio in `data/radar.db` (non versionato, vedi `.gitignore`).
 
+## Test
+
+Test automatici sul percorso critico dei 3 endpoint (solo `unittest` della
+libreria standard, nessuna dipendenza esterna):
+
+```bash
+cd 70_progetti/radar-ia/repo-app
+python3 -m unittest test_server -v
+```
+
 ## Cosa fa (perimetro dichiarato in SCOPING.md §7)
 
 - Aggiungere una risorsa (titolo, url opzionale, tipo, note).

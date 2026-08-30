@@ -59,11 +59,50 @@ grandezza resta "poche ore-agente", coerente col budget dichiarato.
 
 ## Scostamento di scope cumulativo
 
-A questo Sprint (001) non c'è ancora scostamento: lo scope firmato di
-riferimento è quello appena fissato in `SCOPING.md §7` (solo catalogo
-risorse). Questa sezione va confrontata ad ogni Sprint successivo con
-`SCOPING.md §7`, sommando tutte le piccole estensioni "ragionevoli" via via
-proposte — non solo l'ultima — per far emergere lo scostamento cumulativo.
+**Aggiornamento Sprint corrente**: costruito = ancora invariato rispetto a
+`SCOPING.md §7` (nessuna riga di codice nuova aggiunta a `repo-app/` a
+questo Sprint). Ma è arrivata la **prima richiesta di estensione**, ed è
+la voce che pesa di più tra tutte quelle elencate in §7 come fuori scope:
+non un campo in più, ma l'intera rete/community multi-utente.
+
+**Scostamento proposto #1 (non ancora deciso, non costruito):**
+- **Data**: 2026-08-30, Sprint 001.
+- **Richiesta**: il committente ha chiesto di espandere la visione a una
+  community — condivisione di esperienze su IA/lavoro/vibe coding/
+  esperimenti, condivisione di opinioni, possibilità di unirsi al progetto
+  di qualcun altro, richieste di aiuto sul proprio progetto.
+- **Confronto con lo scope firmato**: corrisponde punto per punto a
+  `SCOPING.md §7`, blocco "Esplicitamente fuori scope in questa fase" —
+  in particolare "l'intera rete/community aperta a regime... utenti
+  multipli esterni, contributi di terzi, moderazione" e "autenticazione
+  multi-utente, ruoli, permessi differenziati". Non è un incremento
+  marginale sommabile alle piccole estensioni tipiche dello scope creep:
+  è di fatto un salto diretto allo Sviluppo Pieno della visione a regime,
+  che `scoping/IPOTESI.md` (Punto di Decisione #2) condiziona a un Segnale
+  da 3-5 utenti terzi reali non ancora raccolto. Oggi il committente resta
+  l'unico utente del prototipo, consegnato in questo stesso Sprint.
+- **Copertura**: nessuna Delibera locale presente in
+  `70_progetti/radar-ia/delibere/` (cartella vuota). **Veto del Referente
+  di Commessa attivo** su questa richiesta finché non viene deliberata.
+- **Trattamento**: preparato un Punto di Decisione formale per l'umano —
+  `70_progetti/radar-ia/PUNTO_DECISIONE_001.md` — con opzioni (procedi come
+  da scope / taglia lo scope con un'estensione limitata single-user /
+  ferma e riparti con uno Scoping nuovo per la commessa community) e
+  raccomandazione. Nessuna comunicazione è stata inviata al committente:
+  è una bozza per l'umano.
+- **Stato**: in attesa di decisione. Finché non c'è una decisione esplicita
+  (via Delibera locale o conferma dell'umano su una delle opzioni), lo
+  scostamento resta a **0 righe di codice costruite fuori scope**, ma il
+  rischio è alto proprio perché la richiesta è già stata espressa dal
+  committente: da monitorare ad ogni Sprint successivo perché non
+  rientri "di fatto" per piccoli passi (un campo, poi un secondo utente di
+  prova, poi un sistema di commenti) senza mai passare da una decisione
+  esplicita — è esattamente il pattern che il mandato del Referente deve
+  intercettare.
+
+Questa sezione va confrontata ad ogni Sprint successivo con `SCOPING.md
+§7`, sommando tutte le piccole estensioni "ragionevoli" via via proposte —
+non solo l'ultima — per far emergere lo scostamento cumulativo.
 
 **Perimetro di riferimento per il veto del Referente di Commessa (nessuna
 Delibera presente ad oggi in `70_progetti/radar-ia/delibere/`, cartella
@@ -82,9 +121,12 @@ inviata a questo Sprint.
 
 ## Debiti aperti
 
-Rinvio a `DEBITO_TECNICO.md` e `DEBITO_RISCHIO.md` (entrambi da verificare/
-popolare quando inizia lo sviluppo). Nessun debito registrato a questo
-Sprint poiché non è ancora stato scritto codice.
+`DEBITO_TECNICO.md`: DT-0001 (scorciatoia di processo — Regista che
+costruisce senza delegare) **estinto** dopo revisione di `architetto` e
+`sviluppatore-backend`; DT-0002/0003/0004 (schema dati, validazione URL
+server-side, connessione/test) **estinti** con codice corretto e 7/7 test
+`unittest` verdi. `DEBITO_RISCHIO.md` ancora da popolare (nessun rischio di
+compliance aperto oggi: nessun dato personale trattato, single-user).
 
 ## Domande aperte verso il committente (da SCOPING.md §0)
 

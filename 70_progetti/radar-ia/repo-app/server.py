@@ -33,13 +33,39 @@ STATI_AMMESSI = {"da_provare", "letta_provata"}
 RE_ID = re.compile(r"^/api/risorse/(\d+)$")
 
 
-def connetti_db():
+def inizializza_db():
+    # Esegue lo schema una sola volta all'avvio (estinzione DT-0004): prima
+    # veniva rieseguito a ogni richiesta HTTP dentro connetti_db(),
+    # idempotente ma inutilmente costoso (nuova connessione + executescript
+    # per ogni GET/POST/PATCH).
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
+    try:
+        with open(SCHEMA_PATH, encoding="utf-8") as f:
+            conn.executescript(f.read())
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def connetti_db():
+    # Connessione "leggera" per richiesta: nessuna creazione di schema qui.
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    with open(SCHEMA_PATH, encoding="utf-8") as f:
-        conn.executescript(f.read())
     return conn
+
+
+def url_valido(url):
+    """Valida lo schema (http/https) lato server, indipendentemente dal
+    client che chiama l'API (estinzione DT-0003; stessa regola già
+    applicata solo lato client in static/app.js, urlSicuro)."""
+    if not url:
+        return True  # url è opzionale
+    try:
+        parsata = urlparse(url)
+    except ValueError:
+        return False
+    return parsata.scheme in ("http", "https") and bool(parsata.netloc)
 
 
 def adesso():
@@ -106,10 +132,19 @@ class GestoreRadarIA(BaseHTTPRequestHandler):
     # --- endpoint API --------------------------------------------------
 
     def _lista_risorse(self):
+        # JOIN risorse+interazioni (invece di due query): nel perimetro
+        # single-user di oggi ogni risorsa ha esattamente un'interazione
+        # implicita (utente_id NULL), quindi il JOIN non moltiplica righe e
+        # resta una singola query semplice da leggere.
         conn = connetti_db()
         try:
             righe = conn.execute(
-                "SELECT * FROM risorse ORDER BY creato_il DESC"
+                "SELECT r.id AS id, r.titolo AS titolo, r.url AS url, r.tipo AS tipo, "
+                "i.note AS note, i.stato AS stato, r.creato_il AS creato_il, "
+                "i.aggiornato_il AS aggiornato_il "
+                "FROM risorse r JOIN interazioni i ON i.risorsa_id = r.id "
+                "WHERE i.utente_id IS NULL "
+                "ORDER BY r.creato_il DESC"
             ).fetchall()
             self._json(200, [riga_a_dict(r) for r in righe])
         finally:
@@ -129,6 +164,8 @@ class GestoreRadarIA(BaseHTTPRequestHandler):
         url = (dati.get("url") or "").strip()
         if len(url) > 2000:
             return self._errore(400, "url troppo lungo")
+        if not url_valido(url):
+            return self._errore(400, "url non valido: deve iniziare con http:// o https://")
 
         tipo = (dati.get("tipo") or "pratica").strip()
         if tipo not in TIPI_AMMESSI:
@@ -142,13 +179,23 @@ class GestoreRadarIA(BaseHTTPRequestHandler):
         try:
             ora = adesso()
             cur = conn.execute(
-                "INSERT INTO risorse (titolo, url, tipo, note, stato, creato_il, aggiornato_il) "
-                "VALUES (?, ?, ?, ?, 'da_provare', ?, ?)",
-                (titolo, url, tipo, note, ora, ora),
+                "INSERT INTO risorse (titolo, url, tipo, creato_il) VALUES (?, ?, ?, ?)",
+                (titolo, url, tipo, ora),
+            )
+            risorsa_id = cur.lastrowid
+            conn.execute(
+                "INSERT INTO interazioni (risorsa_id, utente_id, note, stato, aggiornato_il) "
+                "VALUES (?, NULL, ?, 'da_provare', ?)",
+                (risorsa_id, note, ora),
             )
             conn.commit()
             riga = conn.execute(
-                "SELECT * FROM risorse WHERE id = ?", (cur.lastrowid,)
+                "SELECT r.id AS id, r.titolo AS titolo, r.url AS url, r.tipo AS tipo, "
+                "i.note AS note, i.stato AS stato, r.creato_il AS creato_il, "
+                "i.aggiornato_il AS aggiornato_il "
+                "FROM risorse r JOIN interazioni i ON i.risorsa_id = r.id "
+                "WHERE r.id = ? AND i.utente_id IS NULL",
+                (risorsa_id,),
             ).fetchone()
             self._json(201, riga_a_dict(riga))
         finally:
@@ -172,12 +219,18 @@ class GestoreRadarIA(BaseHTTPRequestHandler):
                 return self._errore(404, "risorsa non trovata")
 
             conn.execute(
-                "UPDATE risorse SET stato = ?, aggiornato_il = ? WHERE id = ?",
+                "UPDATE interazioni SET stato = ?, aggiornato_il = ? "
+                "WHERE risorsa_id = ? AND utente_id IS NULL",
                 (stato, adesso(), id_risorsa),
             )
             conn.commit()
             riga = conn.execute(
-                "SELECT * FROM risorse WHERE id = ?", (id_risorsa,)
+                "SELECT r.id AS id, r.titolo AS titolo, r.url AS url, r.tipo AS tipo, "
+                "i.note AS note, i.stato AS stato, r.creato_il AS creato_il, "
+                "i.aggiornato_il AS aggiornato_il "
+                "FROM risorse r JOIN interazioni i ON i.risorsa_id = r.id "
+                "WHERE r.id = ? AND i.utente_id IS NULL",
+                (id_risorsa,),
             ).fetchone()
             self._json(200, riga_a_dict(riga))
         finally:
@@ -213,7 +266,7 @@ class GestoreRadarIA(BaseHTTPRequestHandler):
 def main():
     host = os.environ.get("RADAR_IA_HOST", "127.0.0.1")
     porta = int(os.environ.get("RADAR_IA_PORT", "8420"))
-    connetti_db().close()  # crea schema/db se non esiste
+    inizializza_db()  # crea schema/db se non esiste, una sola volta
     server = ThreadingHTTPServer((host, porta), GestoreRadarIA)
     print(f"RADAR IA in ascolto su http://{host}:{porta} (solo locale, nessuna autenticazione)")
     try:
