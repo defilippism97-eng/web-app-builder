@@ -12,7 +12,14 @@ Ultimo aggiornamento: 2026-08-30 · Sprint: 001
 
 ## Commesse attive
 
-Nessuna. (Sprint 000: l'Officina non ha ancora ricevuto una commessa.)
+- **RADAR IA** (`70_progetti/radar-ia/`) — commessa reale piccola (risolve
+  D-001), committente = utente reale. Fase: Scoping in chiusura → Prototipo.
+  Prototipo Minimo Verificabile: catalogo di risorse (CRUD
+  aggiungi/visualizza/segna "letta-provata"), non l'intera rete/community a
+  regime. Ipotesi di Valore compilata (DESIGN), Segnale dichiarato
+  debole/auto-riferito. Bloccata su budget/scadenza/redditività non ancora
+  dichiarati dal committente — vedi domande aperte in
+  `70_progetti/radar-ia/STATO_COMMESSA.md`.
 
 ## Coda — Sprint 002 (in attesa della prima commessa)
 
