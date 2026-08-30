@@ -39,3 +39,30 @@ NOTA: `[[LACUNA: la struttura Drive di Motore Talento è definita in un'altra
 sessione; questo repo è indipendente ma la convenzione di messa online
 (dove vanno i link di staging/produzione) va decisa qui]]`
 APERTA DAL: sprint 000
+
+---
+
+### D-004 — Stato definitivo del testo "Digital Omnibus AI" (differimento scadenze AI Act)
+BLOCCA: qualunque commessa che pianifichi tempistiche di adeguamento AI Act
+sulla base delle nuove date citate in `50_compliance/PARERE_QUADRO_DATI.md`.
+NOTA: `[[LACUNA: al 30/08/2026 risulta solo un accordo politico provvisorio
+(trilogo del 7 maggio 2026) sul differimento delle scadenze Annex III/Annex I
+dell'AI Act (a dicembre 2027 e agosto 2028). Prima di farci affidamento va
+verificata l'adozione formale del testo (pubblicazione in Gazzetta Ufficiale
+UE), non la sola notizia dell'accordo]]`
+SEGNALATA DA: custode, sprint 001
+APERTA DAL: sprint 001
+
+---
+
+### D-005 — Soglia oggettiva per l'accessibilità richiesta de facto
+BLOCCA: nessun task specifico oggi; rilevante alla prima commessa con
+pubblico target vulnerabile (utenza anziana, servizio pubblico, disabilità
+nota) che non dichiara esplicitamente un requisito di accessibilità.
+NOTA: `[[LACUNA: il parere quadro del Custode (50_compliance/PARERE_QUADRO_DATI.md)
+introduce il principio che il Custode possa segnalare un requisito di
+accessibilità anche se non dichiarato nello Scoping, ma non esiste un
+criterio oggettivo condiviso con lo Stratega di Prodotto per quando questo
+scatta]]`
+SEGNALATA DA: custode, sprint 001
+APERTA DAL: sprint 001
