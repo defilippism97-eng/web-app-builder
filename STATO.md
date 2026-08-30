@@ -9,6 +9,12 @@ Ultimo aggiornamento: 2026-08-30 · Sprint: 001
   fonti/licenze → validazione della domanda.
 - **DEL-0002** — Architettura di lavoro: repo git indipendente da Motore
   Talento, Drive come specchio in sola lettura pensato per la messa online.
+- **DEL-0003** — Il Regista non produce mai contenuto di dominio
+  (architettura, codice), nemmeno sotto budget stretto: sempre delega ad
+  `architetto` e a `sviluppatore-backend`/`sviluppatore-frontend`. Nata da
+  una scorciatoia presa dal Regista su RADAR IA e non autorizzata dal
+  committente — debito registrato in
+  `70_progetti/radar-ia/DEBITO_TECNICO.md`.
 
 ## Commesse attive
 
