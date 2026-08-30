@@ -15,6 +15,11 @@ Ultimo aggiornamento: 2026-08-30 · Sprint: 001
   una scorciatoia presa dal Regista su RADAR IA e non autorizzata dal
   committente — debito registrato in
   `70_progetti/radar-ia/DEBITO_TECNICO.md`.
+- **DEL-0004** — Quando il budget di una commessa è "risorse
+  dell'abbonamento, nessun credito aggiuntivo", il Regista programma di
+  default una ripresa automatica del lavoro (Routine periodica) al posto
+  di fermarsi silenziosamente su limite di sessione. Applicata la prima
+  volta su RADAR IA (Routine `trig_01MsNvLecksQF6tXEU4A8sug`, ogni 3 ore).
 
 ## Commesse attive
 

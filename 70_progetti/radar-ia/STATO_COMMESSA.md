@@ -57,21 +57,35 @@ tracciata da questo processo (il committente monitora il proprio consumo
 lato piattaforma Claude); il Referente segnala qui che l'ordine di
 grandezza resta "poche ore-agente", coerente col budget dichiarato.
 
-**`[[LACUNA: nuovo budget/tempo per il mockup community non ancora
-dichiarato dal committente]]`.** Il budget originario (due sessioni Claude
-Pro, Sonnet 5, ragionamento medio) è stato dimensionato per il solo
-catalogo single-user (SCOPING.md §5), non per un secondo pacchetto di
-schermate autorizzato ora da `delibere/DEL-LOCALE-001-mockup-community.md`.
-Stima di ordine di grandezza dell'Officina (da sottoporre al committente
-per conferma, non decisione presa): un mockup di poche schermate statiche
-(elenco/dettaglio esperienze, form di esempio, vetrina "unisciti a un
-progetto"/"chiedi aiuto") senza backend è un incremento **minore** rispetto
-al costo del backend pieno scartato — verosimilmente comparabile a una
-frazione di una sessione Claude Pro aggiuntiva per design+frontend — ma non
-è gratuito né compreso implicitamente nel budget già dichiarato per il solo
-catalogo. Il Referente non fissa questa cifra unilateralmente: va confermata
-o corretta dal committente prima che `designer-prodotto` e
-`sviluppatore-frontend` inizino il lavoro.
+**Budget per il mockup community — deciso dal committente (2026-08-30):**
+tutto il budget di token necessario a completare questa fase, ma **solo
+entro le risorse dell'abbonamento Claude già attivo, nessun credito
+aggiuntivo**. Non è un tetto in ore/sessioni fisse come il budget
+originario del catalogo (due sessioni Claude Pro): è un vincolo di fonte,
+non di quantità — il lavoro continua finché serve, ma si ferma ogni volta
+che la sessione esaurisce il limite d'uso del piano, e riparte da sola al
+prossimo controllo programmato (vedi sotto, DEL-0004).
+
+**Meccanismo di ripresa automatica** (DEL-0004, applicata qui per la prima
+volta): è stata programmata una Routine che controlla periodicamente se la
+sessione è di nuovo utilizzabile e, in tal caso, riprende la delega ai
+mandati competenti senza bisogno di un messaggio dell'umano. Limite onesto:
+il Regista non conosce l'orario esatto di reset del limite del committente,
+quindi la ripresa avviene al prossimo controllo programmato dopo lo
+sblocco, non nell'istante esatto dello sblocco. Cadenza scelta: ogni 3 ore
+— una stima, non un dato certo sul piano del committente.
+
+**Stima di tempo/sessioni per il mockup, con le riserve dovute**: il
+Regista non ha visibilità sul consumo residuo reale del committente né
+sui token esatti che designer e sviluppatore consumeranno (dipende da
+quante schermate, quante iterazioni di revisione). Etichetta
+**[DA VERIFICARE]**, non [VALIDATO]: a titolo di solo ordine di grandezza,
+il mockup (poche schermate statiche, solo frontend, nessuna integrazione
+backend) è un lavoro più piccolo di quanto già consegnato per il catalogo
+(scoping + architettura + build + revisione + correzioni, distribuito su
+più deleghe in questa stessa sessione) — probabile che rientri in una
+sessione se il perimetro resta quello della Delibera, con margine di 2-3
+sessioni se emergono revisioni. Non è una promessa vincolante.
 
 ## Scostamento di scope cumulativo
 
